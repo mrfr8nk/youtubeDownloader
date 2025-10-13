@@ -1,37 +1,32 @@
-import { type User, type InsertUser } from "@shared/schema";
+import { type DownloadHistoryItem } from "@shared/schema";
 import { randomUUID } from "crypto";
 
-// modify the interface with any CRUD methods
-// you might need
-
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  addDownloadHistory(item: Omit<DownloadHistoryItem, 'id'>): Promise<DownloadHistoryItem>;
+  getDownloadHistory(): Promise<DownloadHistoryItem[]>;
+  clearDownloadHistory(): Promise<void>;
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<string, User>;
+  private downloadHistory: Map<string, DownloadHistoryItem>;
 
   constructor() {
-    this.users = new Map();
+    this.downloadHistory = new Map();
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
+  async addDownloadHistory(item: Omit<DownloadHistoryItem, 'id'>): Promise<DownloadHistoryItem> {
     const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+    const historyItem: DownloadHistoryItem = { ...item, id };
+    this.downloadHistory.set(id, historyItem);
+    return historyItem;
+  }
+
+  async getDownloadHistory(): Promise<DownloadHistoryItem[]> {
+    return Array.from(this.downloadHistory.values()).sort((a, b) => b.timestamp - a.timestamp);
+  }
+
+  async clearDownloadHistory(): Promise<void> {
+    this.downloadHistory.clear();
   }
 }
 
