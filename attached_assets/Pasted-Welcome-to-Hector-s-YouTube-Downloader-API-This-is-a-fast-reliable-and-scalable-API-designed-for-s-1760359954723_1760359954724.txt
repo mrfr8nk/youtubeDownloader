@@ -1,0 +1,29 @@
+Welcome to Hector's YouTube Downloader API
+This is a fast, reliable, and scalable API designed for seamless downloading of YouTube videos and audio content. Built to deliver high-quality media files efficiently, this API empowers developers, content creators, and enthusiasts to integrate YouTube download capabilities into their applications, bots, and workflows effortlessly. With a focus on performance and user experience, it supports multiple video and audio formats, allowing you to customize downloads based on your needs. Whether you're building a bot, a website, or a personal project, this API provides a straightforward and professional solution to access YouTube media quickly and safely.
+
+How to Use
+Simply make a GET request to this page's URL and append the ?url= parameter with the YouTube video URL you want to download. You will receive a JSON response containing links to various audio and video formats.
+
+Example API Call
+https://yt-dl.officialhectormanuel.workers.dev/?url=https://youtu.be/Cn7PfVH4lVs
+Expected JSON Response
+The API returns a JSON object containing the video's details and a list of direct download links for different qualities, just like this:
+
+
+{
+  "status": true,
+  "creator": "Hector Manuel",
+  "title": "Wendy Shay ft Olivetheboy - Crazy Love ( Visualizer )",
+  "thumbnail": "https://i.ytimg.com/vi/Cn7PfVH4lVs/maxresdefault.jpg",
+  "audio": "https://yt-dl.officialhectormanuel.workers.dev/stream?id=Cn7PfVH4lVs&format=mp3&key=...&title=...",
+  "videos": {
+    "144": "https://yt-dl.officialhectormanuel.workers.dev/stream?id=Cn7PfVH4lVs&format=144&key=...&title=...",
+    "240": "https://yt-dl.officialhectormanuel.workers.dev/stream?id=Cn7PfVH4lVs&format=240&key=...&title=...",
+    "360": "https://yt-dl.officialhectormanuel.workers.dev/stream?id=Cn7PfVH4lVs&format=360&key=...&title=...",
+    "480": "https://yt-dl.officialhectormanuel.workers.dev/stream?id=Cn7PfVH4lVs&format=480&key=...&title=...",
+    "720": "https://yt-dl.officialhectormanuel.workers.dev/stream?id=Cn7PfVH4lVs&format=720&key=...&title=...",
+    "1080": "https://yt-dl.officialhectormanuel.workers.dev/stream?id=Cn7PfVH4lVs&format=1080&key=...&title=..."
+  }
+}
+        
+© 2025 Hector | All Rights Reserved
