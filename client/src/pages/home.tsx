@@ -15,8 +15,7 @@ export default function Home() {
 
   const fetchVideoMutation = useMutation({
     mutationFn: async (url: string) => {
-      const response = await apiRequest("/api/youtube/fetch", "POST", { url });
-      return response as YoutubeVideo;
+      return await apiRequest("/api/youtube/fetch", "POST", { url }) as YoutubeVideo;
     },
     onSuccess: (data) => {
       if (data.status) {

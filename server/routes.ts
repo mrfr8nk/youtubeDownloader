@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { youtubeRequestSchema } from "@shared/schema";
+import { youtubeRequestSchema, youtubeVideoSchema, insertDownloadHistorySchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   
@@ -19,7 +19,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       const data = await response.json();
-      res.json(data);
+      const validatedData = youtubeVideoSchema.parse(data);
+      res.json(validatedData);
     } catch (error) {
       console.error("Error fetching YouTube data:", error);
       res.status(400).json({ 
@@ -30,11 +31,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/download-history", async (req, res) => {
     try {
+      const validatedData = insertDownloadHistorySchema.parse(req.body);
       const historyItem = await storage.addDownloadHistory({
-        title: req.body.title,
-        thumbnail: req.body.thumbnail,
-        quality: req.body.quality,
-        downloadUrl: req.body.downloadUrl,
+        ...validatedData,
         timestamp: Date.now(),
       });
       res.json(historyItem);

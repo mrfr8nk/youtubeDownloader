@@ -20,7 +20,13 @@ export const downloadHistoryItemSchema = z.object({
   timestamp: z.number(),
 });
 
+export const insertDownloadHistorySchema = downloadHistoryItemSchema.omit({ 
+  id: true, 
+  timestamp: true 
+});
+
 export type DownloadHistoryItem = z.infer<typeof downloadHistoryItemSchema>;
+export type InsertDownloadHistory = z.infer<typeof insertDownloadHistorySchema>;
 
 export const youtubeRequestSchema = z.object({
   url: z.string().url(),
