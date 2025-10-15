@@ -97,11 +97,9 @@ export function QualitySelector({ video, onDownload }: QualitySelectorProps) {
                     <Badge className={qualityInfo.color}>{qualityInfo.label}</Badge>
                     <Download className="h-4 w-4" />
                   </div>
-                  {fileSize && (
-                    <span className="text-xs text-muted-foreground font-mono">
-                      {formatFileSize(fileSize)}
-                    </span>
-                  )}
+                  <span className="text-xs text-muted-foreground font-mono">
+                    {fileSize ? formatFileSize(fileSize) : 'Size unknown'}
+                  </span>
                 </Button>
               );
             })}
