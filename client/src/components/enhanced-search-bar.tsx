@@ -17,6 +17,11 @@ interface SearchResult {
   thumbnail: string;
   duration?: string;
   url: string;
+  views?: string;
+  ago?: string;
+  author?: {
+    name?: string;
+  };
 }
 
 export function EnhancedSearchBar({ onSearch, isLoading }: SearchBarProps) {
@@ -138,7 +143,7 @@ export function EnhancedSearchBar({ onSearch, isLoading }: SearchBarProps) {
                 variant="ghost"
                 size="icon"
                 onClick={handleClear}
-                className="absolute right-[108px] top-1/2 -translate-y-1/2 h-10 w-10 hover:bg-muted"
+                className="absolute right-[110px] top-1/2 -translate-y-1/2 h-10 w-10 hover:bg-muted rounded-lg"
                 data-testid="button-clear-search"
               >
                 <X className="h-4 w-4" />
@@ -174,9 +179,29 @@ export function EnhancedSearchBar({ onSearch, isLoading }: SearchBarProps) {
                 />
                 <div className="flex-1 min-w-0">
                   <p className="font-medium line-clamp-2 text-sm leading-snug">{result.title}</p>
-                  {result.duration && (
-                    <p className="text-xs text-muted-foreground mt-1">{result.duration}</p>
-                  )}
+                  <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
+                    {result.author?.name && (
+                      <span className="truncate max-w-[120px]">{result.author.name}</span>
+                    )}
+                    {result.views && (
+                      <>
+                        {result.author?.name && <span>•</span>}
+                        <span>{result.views} views</span>
+                      </>
+                    )}
+                    {result.ago && (
+                      <>
+                        {(result.views || result.author?.name) && <span>•</span>}
+                        <span>{result.ago}</span>
+                      </>
+                    )}
+                    {result.duration && (
+                      <>
+                        {(result.ago || result.views || result.author?.name) && <span>•</span>}
+                        <span>{result.duration}</span>
+                      </>
+                    )}
+                  </div>
                 </div>
                 <LinkIcon className="h-4 w-4 text-muted-foreground flex-shrink-0" />
               </button>

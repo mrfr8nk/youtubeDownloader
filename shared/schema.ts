@@ -7,6 +7,7 @@ export const youtubeVideoSchema = z.object({
   thumbnail: z.string(),
   audio: z.string(),
   videos: z.record(z.string()),
+  videoSizes: z.record(z.string()).optional(),
 });
 
 export type YoutubeVideo = z.infer<typeof youtubeVideoSchema>;
@@ -45,6 +46,11 @@ export const searchResultSchema = z.object({
   thumbnail: z.string(),
   duration: z.string().optional(),
   url: z.string(),
+  views: z.string().optional(),
+  ago: z.string().optional(),
+  author: z.object({
+    name: z.string().optional(),
+  }).optional(),
 });
 
 export type SearchResult = z.infer<typeof searchResultSchema>;

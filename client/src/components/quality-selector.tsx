@@ -9,6 +9,14 @@ interface QualitySelectorProps {
   onDownload: (url: string, quality: string) => void;
 }
 
+const formatFileSize = (bytes?: string | number): string => {
+  if (!bytes) return "";
+  const size = typeof bytes === 'string' ? parseInt(bytes) : bytes;
+  if (isNaN(size)) return "";
+  const mb = size / (1024 * 1024);
+  return mb >= 1 ? `${mb.toFixed(1)} MB` : `${(size / 1024).toFixed(0)} KB`;
+};
+
 const qualityLabels: Record<string, { label: string; color: string }> = {
   "1080": { label: "1080p HD", color: "bg-chart-2 text-white" },
   "720": { label: "720p HD", color: "bg-chart-3 text-white" },
@@ -75,17 +83,25 @@ export function QualitySelector({ video, onDownload }: QualitySelectorProps) {
                 label: `${quality}p`,
                 color: "bg-muted text-muted-foreground",
               };
+              const fileSize = video.videoSizes?.[quality];
               
               return (
                 <Button
                   key={quality}
                   onClick={() => handleDownload(url, quality)}
                   variant="outline"
-                  className="flex items-center justify-between gap-2"
+                  className="flex flex-col items-start justify-between gap-1 h-auto py-3"
                   data-testid={`button-download-${quality}`}
                 >
-                  <Badge className={qualityInfo.color}>{qualityInfo.label}</Badge>
-                  <Download className="h-4 w-4" />
+                  <div className="flex items-center justify-between w-full">
+                    <Badge className={qualityInfo.color}>{qualityInfo.label}</Badge>
+                    <Download className="h-4 w-4" />
+                  </div>
+                  {fileSize && (
+                    <span className="text-xs text-muted-foreground font-mono">
+                      {formatFileSize(fileSize)}
+                    </span>
+                  )}
                 </Button>
               );
             })}

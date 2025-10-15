@@ -18,7 +18,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
         title: video.title,
         thumbnail: video.thumbnail,
         duration: video.timestamp,
-        url: video.url
+        url: video.url,
+        views: video.views ? video.views.toLocaleString() : undefined,
+        ago: video.ago,
+        author: {
+          name: video.author?.name,
+        },
       }));
       
       res.json(formattedResults);
