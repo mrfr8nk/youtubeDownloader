@@ -1,11 +1,9 @@
 
 {
-  "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": null,
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -15,10 +13,5 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "@vercel/node@3"
-    }
-  }
+  ]
 }
