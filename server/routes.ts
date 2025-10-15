@@ -13,24 +13,73 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const mockResults = [
         {
           id: "1",
-          title: `${query} - Music Video`,
+          title: `${query} - Official Music Video`,
           thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
           duration: "3:32",
           url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         },
         {
           id: "2",
-          title: `${query} - Official Video`,
+          title: `${query} - Official Video HD`,
           thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
           duration: "4:15",
-          url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          url: "https://www.youtube.com/watch?v=jNQXAC9IVRw"
         },
         {
           id: "3",
-          title: `${query} - Live Performance`,
+          title: `${query} - Live Performance 2024`,
           thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg",
           duration: "5:42",
-          url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          url: "https://www.youtube.com/watch?v=9bZkp7q19f0"
+        },
+        {
+          id: "4",
+          title: `${query} - Lyrics Video`,
+          thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+          duration: "3:45",
+          url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk"
+        },
+        {
+          id: "5",
+          title: `${query} - Audio Only`,
+          thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg",
+          duration: "3:28",
+          url: "https://www.youtube.com/watch?v=L_jWHffIx5E"
+        },
+        {
+          id: "6",
+          title: `${query} - Cover Version`,
+          thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+          duration: "4:01",
+          url: "https://www.youtube.com/watch?v=t3otBjVZzT0"
+        },
+        {
+          id: "7",
+          title: `${query} - Remix Extended`,
+          thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg",
+          duration: "6:15",
+          url: "https://www.youtube.com/watch?v=xvFZjo5PgG0"
+        },
+        {
+          id: "8",
+          title: `${query} - Acoustic Version`,
+          thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+          duration: "3:52",
+          url: "https://www.youtube.com/watch?v=ysz5S6PUM-U"
+        },
+        {
+          id: "9",
+          title: `${query} - Live at Concert Hall`,
+          thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg",
+          duration: "5:20",
+          url: "https://www.youtube.com/watch?v=DLzxrzFCyOs"
+        },
+        {
+          id: "10",
+          title: `${query} - Behind The Scenes`,
+          thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+          duration: "8:45",
+          url: "https://www.youtube.com/watch?v=y6120QOlsfU"
         }
       ];
       
