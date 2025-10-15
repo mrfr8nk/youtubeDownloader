@@ -4,13 +4,15 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { queryClient } from "./lib/queryClient";
-import Home from "@/pages/home";
+import HomeEnhanced from "@/pages/home-enhanced";
+import Sponsor from "@/pages/sponsor";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={HomeEnhanced} />
+      <Route path="/sponsor" component={Sponsor} />
       <Route component={NotFound} />
     </Switch>
   );

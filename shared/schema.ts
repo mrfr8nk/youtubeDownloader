@@ -32,4 +32,19 @@ export const youtubeRequestSchema = z.object({
   url: z.string().url(),
 });
 
+export const youtubeSearchSchema = z.object({
+  query: z.string().min(1),
+});
+
 export type YoutubeRequest = z.infer<typeof youtubeRequestSchema>;
+export type YoutubeSearch = z.infer<typeof youtubeSearchSchema>;
+
+export const searchResultSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  thumbnail: z.string(),
+  duration: z.string().optional(),
+  url: z.string(),
+});
+
+export type SearchResult = z.infer<typeof searchResultSchema>;
