@@ -113,8 +113,8 @@ export function EnhancedSearchBar({ onSearch, isLoading }: SearchBarProps) {
       <form onSubmit={handleSubmit} className="relative">
         <div className="relative group">
           <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-chart-3 to-primary rounded-2xl opacity-30 group-hover:opacity-50 blur transition duration-300"></div>
-          <div className="relative">
-            <div className="absolute left-5 top-1/2 -translate-y-1/2 z-10 flex items-center">
+          <div className="relative flex items-center">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center pointer-events-none">
               {searchMutation.isPending ? (
                 <Loader2 className="h-5 w-5 text-muted-foreground animate-spin" />
               ) : (
@@ -129,7 +129,7 @@ export function EnhancedSearchBar({ onSearch, isLoading }: SearchBarProps) {
                 setInput(e.target.value);
                 setError("");
               }}
-              className="h-16 pl-14 pr-32 text-base rounded-2xl bg-card border-2 focus:border-primary transition-all"
+              className="h-16 pl-12 pr-32 text-base rounded-2xl bg-card border-2 focus:border-primary transition-all"
               data-testid="input-youtube-search"
             />
             {input && (
@@ -138,7 +138,7 @@ export function EnhancedSearchBar({ onSearch, isLoading }: SearchBarProps) {
                 variant="ghost"
                 size="icon"
                 onClick={handleClear}
-                className="absolute right-24 top-1/2 -translate-y-1/2 h-10 w-10"
+                className="absolute right-[108px] top-1/2 -translate-y-1/2 h-10 w-10 hover:bg-muted"
                 data-testid="button-clear-search"
               >
                 <X className="h-4 w-4" />
@@ -147,7 +147,7 @@ export function EnhancedSearchBar({ onSearch, isLoading }: SearchBarProps) {
             <Button
               type="submit"
               variant="default"
-              className="absolute right-2 top-1/2 -translate-y-1/2 h-12 px-6 rounded-xl"
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-12 px-6 rounded-xl font-semibold"
               disabled={isLoading}
               data-testid="button-fetch"
             >
