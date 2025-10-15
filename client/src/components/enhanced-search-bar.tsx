@@ -152,7 +152,7 @@ export function EnhancedSearchBar({ onSearch, isLoading }: SearchBarProps) {
             <Button
               type="submit"
               variant="default"
-              className="absolute right-2 top-1/2 -translate-y-1/2 h-10 px-6 rounded-xl font-semibold"
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-11 px-6 rounded-xl font-semibold"
               disabled={isLoading}
               data-testid="button-fetch"
             >
